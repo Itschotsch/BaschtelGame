@@ -18,7 +18,7 @@ public class Grid {
 	private String texture;
 	private String hoverTexture;
 	
-	private Button[][] components;
+	protected Button[][] components;
 	
 	
 	
@@ -36,7 +36,7 @@ public class Grid {
 		init();
 	}
 	
-	private void init(){
+	protected void init(){
 		components = new Button[columns][rows];
 		
 		quadSizeX = (sizeX / columns) - (columns - 1) * spacing;
