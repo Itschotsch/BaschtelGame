@@ -2,13 +2,20 @@ package main.items;
 
 public class Item {
 
-	public String texture;
+	private String texture;
+	private String name;
 	
-	public int value;
+	private int value;
+	
+	public int amount;
+	private int maxAmount;
 
 	public Item(String texture) {
 		this.texture = texture;
 	}
 	
+	public String getTexture(){
+		return texture;
+	}
 	
 }

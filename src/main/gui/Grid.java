@@ -16,11 +16,13 @@ public class Grid {
 	private int columns;
 	
 	private String texture;
+	private String hoverTexture;
 	
 	private Button[][] components;
 	
 	
-	public Grid(int posX, int posY, int sizeX, int sizeY, int spacing, int rows, int columns, String texture) {
+	
+	public Grid(int posX, int posY, int sizeX, int sizeY, int spacing, int rows, int columns, String texture, String hoverTexture) {
 		this.posX = posX;
 		this.posY = posY;
 		this.sizeX = sizeX;
@@ -29,6 +31,7 @@ public class Grid {
 		this.rows = rows;
 		this.columns = columns;
 		this.texture = texture;
+		this.hoverTexture = hoverTexture;
 		
 		init();
 	}
@@ -45,7 +48,7 @@ public class Grid {
 				int quadPosX = posX + (i * spacing) + (i * quadSizeX);
 				int quadPosY = posY + (j * spacing) + (j * quadSizeY);
 				
-				components[i][j] = new Button(quadPosX, quadPosY, quadSizeX, quadSizeY, texture);
+				components[i][j] = new Button(quadPosX, quadPosY, quadSizeX, quadSizeY, texture, hoverTexture);
 			}
 			
 		}
@@ -57,6 +60,18 @@ public class Grid {
 				components[i][j].render();
 			}
 		}
+	}
+	
+	public Button checkCollision(int mouseX, int mouseY){
+		Button hoveredButton = null;
+		for(Button[] buttonArray: components){
+			for(Button button: buttonArray){
+				if(button.checkMouseCollision(mouseX, mouseY) != null){
+					hoveredButton = button;
+				}
+			}
+		}
+		return hoveredButton;
 	}
 	
 	

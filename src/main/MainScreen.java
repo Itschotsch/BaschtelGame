@@ -3,12 +3,16 @@ package main;
 import main.engine.graphics.Graphics;
 import main.engine.graphics.Textures;
 import main.engine.graphics.shaders.Shaders;
+import main.engine.input.Input;
 import main.engine.screens.Screen;
+import main.gui.Button;
 import main.gui.Grid;
 
 public class MainScreen extends Screen {
 	
-	Grid koalaField = new Grid(200, 200, 200, 100, 5, 3, 5, "koala");
+	Grid koalaField = new Grid(200, 200, 500, 500, 5, 5, 5, "koala", "grass");
+	
+	Button activeButton = null;
 
 	@Override
 	public void init() {
@@ -36,13 +40,17 @@ public class MainScreen extends Screen {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		activeButton = koalaField.checkCollision(Input.mouseX, Input.mouseY);
 
 	}
 
 	@Override
 	public void updateInput() {
-		// TODO Auto-generated method stub
+		if(activeButton != null){
+			if(Input.isLeftMouseButtonDownNow()){
+				activeButton.click();
+			}
+		}
 
 	}
 }
