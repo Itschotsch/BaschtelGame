@@ -34,10 +34,7 @@ public class S {
 	public static void init() {
 		Font.loadFontType("bebas-neue");
 		
-		Textures.load("gui/logo", false, false);
 		Textures.load("gui/button", false, false);
-		Textures.load("gui/background", false, false);
-		Textures.load("gui/barrierCorner", false, false);
 		
 		GUIButton.init();
 	}
